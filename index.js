@@ -85,7 +85,6 @@ app.get("/pets", (req, res) => {
     data: pets,
   });
 
-  res.render();
 });
 
 //Route to get one pet
@@ -173,3 +172,28 @@ app.patch("/pet/:id", (req, res) => {
     data: pet,
   });
 });
+
+
+
+//Route to delete a pet
+
+app.delete('/pet/:id', (req,res) =>{
+  const id = Number(req.params.id)
+
+  //find the pet
+  const pet = pets.find((pet) => pet.id === id)
+  
+  if(!pet){
+    return res.status(404).json({
+      status: "Failed",
+      msg: "Product not found"
+    })
+  } else {
+    const UpdatedPets = pets.filter((pet) => pet.id !== id)
+    res.status(200).json({
+      status: "Success",
+      msg: "Product Deleted Successfully",
+      data: UpdatedPets
+    })
+  }
+})
