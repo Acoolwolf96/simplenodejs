@@ -117,10 +117,10 @@ app.post("/pets", (req, res) => {
   let dateAdded = req.body.dateAdded;
   let image = "images/default.jpg";
 
-  if(!name || !age || !medicalHistory){
+  if (!name || !age || !medicalHistory) {
     return res.status(400).json({
-        msg: 'Please fill in missing fields'
-    })
+      msg: "Please fill in missing fields",
+    });
   }
 
   const new_pet = {
@@ -131,15 +131,45 @@ app.post("/pets", (req, res) => {
     adopted,
     medicalHistory,
     dateAdded,
-    image
-  }
+    image,
+  };
 
-  pets.push(new_pet)
+  pets.push(new_pet);
 
-  res.location("localhost:2025/pets/" + new_id)
+  res.location("localhost:2025/pets/" + new_id);
 
   res.status(201).json({
-    msg: 'Pet added Successfully',
-    data: new_pet
-  })
+    msg: "Pet added Successfully",
+    data: new_pet,
+  });
+});
+
+//Route to update a pet
+app.patch("/pet/:id", (req, res) => {
+  const idUpdate = Number(req.params.id);
+
+  const pet = pets.find((p) => p.id === idUpdate);
+
+  if (!pet) {
+    return res.status(404).json({
+      msg: "Pet not found",
+    });
+  }
+
+  const image = "images/default.jpg";
+
+  const { name, species, age, adopted, medicalHistory, dateAdded } = req.body;
+
+  if (name !== undefined) pet.name = name;
+  if (species !== undefined) pet.species = species;
+  if (age !== undefined) pet.age = age;
+  if (adopted !== undefined) pet.adopted = adopted;
+  if (medicalHistory !== undefined) pet.medicalHistory = medicalHistory;
+  if (dateAdded !== undefined) pet.dateAdded = dateAdded;
+  if (image !== undefined) pet.image = image;
+
+  res.status(200).json({
+    msg: "Pet updated successfully",
+    data: pet,
+  });
 });
