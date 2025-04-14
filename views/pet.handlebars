@@ -1,0 +1,21 @@
+<div class="header">
+    <h1>Meet {{name}}</h1>
+</div>
+
+<div class="card-container">
+    <div class="card">
+        <img src="{{image}}" alt="{{name}}" class="pet-img">
+        <div class="card-content">
+            <h2>{{name}}</h2>
+            <p><strong>Species:</strong> {{species}}</p>
+            <p><strong>Age:</strong> {{age}}</p>
+            <p><strong>Adopted:</strong> 
+                <span class="adopted-badge adopted-{{adopted}}">
+                    {{#if adopted}}Yes{{else}}No{{/if}}
+                </span>
+            </p>
+            <p><strong>Medical:</strong> {{medicalHistory}}</p>
+            <p><strong>Added on:</strong> {{dateAdded}}</p>
+        </div>
+    </div>
+</div>

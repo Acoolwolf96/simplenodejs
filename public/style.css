@@ -1,0 +1,164 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --green-color: #3cb815;
+    --light-green-color: #c0eb7b;
+    --orange-color: #ff7e00;
+    --light-orange-color: #f75f1d;
+    --text-color: #1a2428;
+    --bg-color: #fff;
+    --box-shadow: 0 8px 11px rgba(14, 55, 54, 0.15);
+}
+
+body {
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 50px;
+    padding: 20px 100px;
+    margin: 10px auto;
+    transition: 0.5s;
+}
+
+.header h1 {
+    color: var(--orange-color);
+    font-size: 2rem;
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem 5%;
+    margin-top: 120px;
+}
+
+
+.card {
+    background: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    width: 280px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.pet-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: 2px solid var(--light-green-color);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h2 {
+    color: var(--orange-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-content p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.card-content strong {
+    color: var(--green-color);
+    font-weight: 600;
+}
+
+.adopted-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 30px;
+        border-radius: 30px;
+        margin: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .card-container {
+        padding: 1rem;
+        margin-top: 100px;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pet-img {
+        height: 200px;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .card-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .card-content p {
+        font-size: 0.9rem;
+    }
+}
+
+
+.adopted-true {
+    background: var(--light-green-color);
+    color: var(--text-color);
+}
+
+.adopted-false {
+    background: var(--light-orange-color);
+    color: var(--text-color);
+}
